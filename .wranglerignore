@@ -1,0 +1,12 @@
+.git/
+# Explicitly ignore git internals and large pack files to avoid uploading them as assets
+/.git
+/.git/**
+.git/**
+.git/objects/**
+.git/objects/pack/**
+.git/objects/pack/*.pack
+# Ignore node_modules and other common large folders
+node_modules/
+dist/
+build/

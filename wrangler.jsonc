@@ -1,0 +1,13 @@
+{
+  "name": "skyguessr",
+  "compatibility_date": "2026-07-06",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "assets"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
