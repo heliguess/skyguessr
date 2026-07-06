@@ -5,12 +5,12 @@ function cubemap(folder) {
   return {
     type: 'separate',
     paths: {
-      left: `screenshots/${folder}/panorama_3.png`,
-      front: `screenshots/${folder}/panorama_0.png`,
-      right: `screenshots/${folder}/panorama_1.png`,
-      back: `screenshots/${folder}/panorama_2.png`,
-      top: `screenshots/${folder}/panorama_4.png`,
-      bottom: `screenshots/${folder}/panorama_5.png`,
+      left: `assets/screenshots/${folder}/panorama_3.png`,
+      front: `assets/screenshots/${folder}/panorama_0.png`,
+      right: `assets/screenshots/${folder}/panorama_1.png`,
+      back: `assets/screenshots/${folder}/panorama_2.png`,
+      top: `assets/screenshots/${folder}/panorama_4.png`,
+      bottom: `assets/screenshots/${folder}/panorama_5.png`,
     },
     flipTopBottom: true,
   };

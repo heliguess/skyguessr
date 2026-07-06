@@ -10,9 +10,9 @@
   <script src="lib/ol.js"></script>
 
   <!-- unmined map data -->
-  <script src="unmined.map.properties.js"></script>
-  <script src="unmined.map.regions.js"></script>
-  <script src="unmined.js"></script>
+  <script src="data/unmined.map.properties.js"></script>
+  <script src="data/unmined.map.regions.js"></script>
+  <script src="data/unmined.js"></script>
 
   <!-- Photo Sphere Viewer (cubemap panorama) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.css" />
@@ -26,14 +26,14 @@
     }
   </script>
 
-  <link rel="stylesheet" href="geoguessr.css" />
+  <link rel="stylesheet" href="src/geoguessr.css" />
 </head>
 <body>
 
 <div id="page">
   <div id="bg"></div>
 
-  <div id="page-title">SkyGuessr</div>
+  <div id="page-title">SkyGuessr (beta)</div>
 
   <div id="app">
     <div class="inset-screen" id="start-screen">
@@ -129,6 +129,6 @@
   </div>
 </div>
 
-<script type="module" src="geoguessr.js"></script>
+<script type="module" src="src/geoguessr.js"></script>
 </body>
 </html>
