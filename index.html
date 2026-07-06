@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>SkyGuessr</title>
+
+  <!-- OpenLayers -->
+  <link rel="stylesheet" href="lib/ol.css" />
+  <script src="lib/ol.js"></script>
+
+  <!-- unmined map data -->
+  <script src="unmined.map.properties.js"></script>
+  <script src="unmined.map.regions.js"></script>
+  <script src="unmined.js"></script>
+
+  <!-- Photo Sphere Viewer (cubemap panorama) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js",
+        "@photo-sphere-viewer/cubemap-adapter": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/cubemap-adapter/index.module.js",
+        "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js"
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="geoguessr.css" />
+</head>
+<body>
+
+<div id="page">
+  <div id="bg"></div>
+
+  <div id="page-title">SkyGuessr</div>
+
+  <div id="app">
+    <div class="inset-screen" id="start-screen">
+      <div class="intro-card">
+        <div class="screen-sub">
+          You'll be presented with a 360 panoramic image of somewhere in Hypixel SkyBlock.<br>
+          The image will be greyscale and the render distance is set to 4.<br>
+          Click on the map to place your guess, then submit.<br>
+          The closer you are, the more points you earn.
+        </div>
+        <div class="screen-sub highlight">
+          5 rounds · max 5,000 points per round · 25,000 total
+        </div><br>
+        <button class="mc-btn primary" id="start-btn">Start Game</button>
+      </div>
+    </div>
+
+    <div class="inset-screen hidden" id="end-screen">
+      <div class="intro-card">
+      <div id="final-score-display">0</div>
+      <div id="final-score-label">points</div>
+      <div id="final-breakdown"></div>
+      <button class="mc-btn primary" id="play-again-btn">Play Again</button>
+    </div>
+    </div>
+
+    <div id="game-ui" class="hidden">
+
+      <div id="topbar">
+        <div id="hud">
+          <div class="hud-item">
+            <span class="hud-label">Round</span>
+            <span class="hud-val" id="round-val">1 / 5</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Score</span>
+            <span class="hud-val" id="score-val">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="screenshot-panel">
+        <div id="screenshot-label">Where in the world is this?</div>
+        <div id="psv-viewer"></div>
+        <div id="screenshot-placeholder">
+          <span style="font-size:36px">🌍</span>
+          <span>Loading…</span>
+        </div>
+      </div>
+
+      <div id="splitter" aria-hidden="true"></div>
+
+      <div id="map-widget">
+        <div id="map-header">
+          <span id="map-label">Click map to guess</span>
+          <div class="map-header-btns">
+            <button class="map-icon-btn" id="map-expand-btn" title="Expand map">⤢</button>
+            <button class="map-icon-btn" id="map-collapse-btn" title="Collapse map">▼</button>
+          </div>
+        </div>
+        <div id="map"></div>
+        <div id="bottombar">
+          <div id="coords-hint">
+            <span id="guess-coords" style="color:var(--text-dim)">Click the map…</span>
+          </div>
+          <button id="guess-btn" disabled>Confirm Guess</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="result-overlay">
+      <div id="result-card">
+        <div id="result-title"></div>
+        <div id="result-distance"></div>
+        <div id="result-points"></div>
+        <div id="result-pts-label">points this round</div>
+        <div id="result-coords-row">
+          <div class="coord-box">
+            <div class="coord-label">Your Guess</div>
+            <div class="coord-val" id="res-guess"></div>
+          </div>
+          <div class="coord-box">
+            <div class="coord-label">Actual Location</div>
+            <div class="coord-val" id="res-actual"></div>
+          </div>
+        </div>
+        <div id="result-btn-row">
+          <button class="mc-btn" id="view-map-btn">View on Map</button>
+          <button class="mc-btn primary" id="next-btn">Next Round</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="geoguessr.js"></script>
+</body>
+</html>
